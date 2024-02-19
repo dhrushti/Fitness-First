@@ -1,0 +1,29 @@
+SELECT table_name FROM information_schema.tables WHERE table_schema = 'sql6685190';
+
+CREATE TABLE login_cred (name varchar(30),email varchar(50),passwd text);
+
+CREATE TABLE diet (sno int,wtstatus varchar(20),recommendation varchar(5000));
+
+INSERT INTO diet (sno,wtstatus,recommendation) VALUES(?,?,?);
+
+CREATE TABLE trainers (tid int primary key auto_increment,tname varchar(20),specification varchar(20),email varchar(50));
+
+CREATE TABLE users (uid int primary key auto_increment,fname varchar(20),lname varchar(20),age int,date varchar(20),email varchar(50),phone varchar(20),address varchar(100));
+
+CREATE TABLE gymitems (id int primary key auto_increment,name varchar(250),imgpath text,imaghere longtext,howtouse longtext);
+
+CREATE TABLE feedback (id int primary key auto_increment,name varchar(50),email varchar(60),phone varchar(20),message varchar(2000));
+
+INSERT INTO gymitems VALUES(NULL,?,NULL,?,?);
+
+INSERT INTO feedback values (NULL,?,?,?,?);
+
+SELECT * from trainers;
+
+INSERT INTO trainers VALUES (?,?,?,?);
+
+DELETE FROM trainers WHERE EMAIL=?;
+
+SELECT * from users;
+
+DELETE FROM users where phone=?;
