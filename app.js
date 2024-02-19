@@ -24,20 +24,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors());
 
-// var db = mysql.createConnection({
-//     host: "mysql-104344-0.cloudclusters.net",
-//     user: "admin",
-//     password: "y0ev6CVZ",
-//     database: "sculptica",
-//     port: 10218
-// });
 
+// mysql -h sql6.freemysqlhosting.net -P 3306 -u sql6685190 -p
 var db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "drushti",
-    database: "fitness",
+    host: "sql6.freemysqlhosting.net",
+    user: "sql6685190",
+    password: "KiC51KGiFs",
+    database: "sql6685190",
+    port: 3306
 });
+
+// Server: sql6.freemysqlhosting.net
+// Name: sql6685190
+// Username: sql6685190
+// Password: KiC51KGiFs
+// Port number: 3306
+
+// var db = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "drushti",
+//     database: "fitness",
+// });
 
 const underweight = "Eating at least 5 portions of a variety of fruit and vegetables every day. Basing meals on potatoes, bread, rice, pasta or other starchy carbohydrates. Choose wholegrain where possible. Having some dairy or dairy alternatives (such as soya drinks and yoghurts). Have whole (full-fat) milk until you build your weight back up. Eating some beans, pulses, fish, eggs, meat and other protein. Aim for 2 portions of fish every week ? 1 of which should be oily, such as salmon or mackerel. Choosing unsaturated oils and spreads, such as sunflower or rapeseed, and eating them in small amounts. Drinking plenty of fluids. The government recommends 6 to 8 glasses a day. But try not to have drinks just before meals to avoid feeling too full to eat.";
 
@@ -59,10 +67,10 @@ db.connect(function(err) {
         console.log(err);
     } else {
         console.log("Connected!");
-        db.query(`SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = 'fitness';`,(err,tables)=> {
+        db.query(`SELECT table_name FROM information_schema.tables WHERE table_schema = 'sql6685190';`,(err,tables)=> {
             // console.log(tables);
             for(var i=0;i<tables.length;i++){
-                if(tables[i].TABLE_NAME == "login_cred") flag1 = 1;
+                if(tables[i].table_name == "login_cred") flag1 = 1;
             }
         
 
@@ -77,7 +85,7 @@ db.connect(function(err) {
             }
            
             for(var i=0;i<tables.length;i++){
-                if(tables[i].TABLE_NAME == "diet") flag2 = 1;
+                if(tables[i].table_name == "diet") flag2 = 1;
             }
      
 
@@ -103,7 +111,7 @@ db.connect(function(err) {
             }
 
             for(var i=0;i<tables.length;i++){
-                if(tables[i].TABLE_NAME == "trainers") flag3 = 1;
+                if(tables[i].table_name == "trainers") flag3 = 1;
             }
          
 
@@ -119,7 +127,7 @@ db.connect(function(err) {
 
 
             for(var i=0;i<tables.length;i++){
-                if(tables[i].TABLE_NAME == "users") flag4 = 1;
+                if(tables[i].table_name == "users") flag4 = 1;
             }
       
 
@@ -134,7 +142,7 @@ db.connect(function(err) {
             }
 
             for(var i=0;i<tables.length;i++){
-                if(tables[i].TABLE_NAME == "gymitems") flag5 =1;
+                if(tables[i].table_name == "gymitems") flag5 =1;
             }
             if(!flag5){
                 var sql = "CREATE TABLE gymitems (id int primary key auto_increment,name varchar(250),imgpath text,imaghere longtext,howtouse longtext);";
@@ -147,7 +155,7 @@ db.connect(function(err) {
             }
 
             for(var i=0;i<tables.length;i++){
-                if(tables[i].TABLE_NAME== "feedback") flag6 = 1;
+                if(tables[i].table_name== "feedback") flag6 = 1;
             }
 
 
