@@ -1,27 +1,28 @@
 //jshint esversion:6
+//requiring all dependencies
 
 const mysql = require("mysql");
-const _ = require("lodash");
-const express = require("express");
-const bodyParser = require("body-parser");
-const multer = require("multer");
-const bcrypt = require("bcrypt");
-const Razorpay = require("razorpay");
+const _ = require("lodash");//all to small letters redirectin
+const express = require("express");//node js framewrk is express app.get etc
+const bodyParser = require("body-parser");//to get data from frontend to backend
+const multer = require("multer");//img upload
+const bcrypt = require("bcrypt");//hashin passwrd
+const Razorpay = require("razorpay");//payment
 const cors = require("cors");
 const e = require("express");
 
-const saltRounds = 10;
+const saltRounds = 10;//Hashing and Salting drushtixxx
 
 const app = express();
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");//frontend is ejs to backend
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // const io = new WebSocket.Server({ noServer: true });
 // global.io = new WebSocket.Server({ noServer: true });
 
-app.use(express.static("public"));
+app.use(express.static("public"));//every static file is in public folder
 app.use(cors());
 
 
@@ -67,6 +68,7 @@ db.connect(function(err) {
         console.log(err);
     } else {
         console.log("Connected!");
+        //only inside this db.query everything ll be executed
         db.query(`SELECT table_name FROM information_schema.tables WHERE table_schema = 'sql6685190';`,(err,tables)=> {
             // console.log(tables);
             for(var i=0;i<tables.length;i++){
@@ -259,6 +261,7 @@ app.post("/deleteEntry", (req, res) => {
 
 app.get("/bmi", (req, res) => {
     res.render("bmi");
+    // goto bmi page
 });
 
 app.post("/bmi", (req, res) => {
@@ -471,6 +474,7 @@ app.get("/paynow", (req, res)=> {
 });
 
 var instance = new Razorpay({
+    // api key by rp
     key_id: 'rzp_test_6UGm13aOlZF5Sz',
     key_secret: 'Y7WvEJjXz4gumRoZxgxNf7RA',
 });
